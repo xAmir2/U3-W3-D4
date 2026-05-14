@@ -20,6 +20,7 @@ function App() {
         <Route path="/favourites" element={<Favourites />} />
 
         <Route path="/:company" element={<CompanySearchResults />} />
+
       </Routes>
     </BrowserRouter>
   );

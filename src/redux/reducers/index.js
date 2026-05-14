@@ -1,26 +1,11 @@
-const initialState = {
-  companies: [],
-};
+import { combineReducers } from "redux";
 
-const mainReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_TO_FAVOURITES":
-      return {
-        ...state,
-        companies: [...state.companies, action.payload],
-      };
+import favouritesReducer from "./favouritesReducer";
+import jobsReducer from "./jobsReducer";
 
-    case "REMOVE_FROM_FAVOURITES":
-      return {
-        ...state,
-        companies: state.companies.filter(
-          (company) => company._id !== action.payload,
-        ),
-      };
+const rootReducer = combineReducers({
+  favourites: favouritesReducer,
+  jobs: jobsReducer,
+});
 
-    default:
-      return state;
-  }
-};
-
-export default mainReducer;
+export default rootReducer;

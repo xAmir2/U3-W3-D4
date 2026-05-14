@@ -1,6 +1,10 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  addToFavouritesAction,
+  removeFromFavouritesAction,
+} from "../redux/actions";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
@@ -28,24 +32,14 @@ const Job = ({ data }) => {
         {!isFavourite ? (
           <Button
             variant="success"
-            onClick={() =>
-              dispatch({
-                type: "ADD_TO_FAVOURITES",
-                payload: data,
-              })
-            }
+            onClick={() => dispatch(addToFavouritesAction(data))}
           >
             Add to favourites
           </Button>
         ) : (
           <Button
             variant="secondary"
-            onClick={() =>
-              dispatch({
-                type: "REMOVE_FROM_FAVOURITES",
-                payload: data._id,
-              })
-            }
+            onClick={() => dispatch(removeFromFavouritesAction(data._id))}
           >
             Already saved
           </Button>
